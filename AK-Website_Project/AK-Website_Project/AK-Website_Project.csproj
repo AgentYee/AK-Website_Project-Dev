@@ -117,6 +117,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\Bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Bootstrap\js\npm.js" />
+    <Content Include="Content\JQuery\jquery-3.2.1.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
@@ -142,6 +151,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Content\Bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\Bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
