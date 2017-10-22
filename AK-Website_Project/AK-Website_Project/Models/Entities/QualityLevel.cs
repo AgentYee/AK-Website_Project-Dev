@@ -9,7 +9,7 @@ namespace AK_Website_Project.Models.Entities
     {
         public QualityLevel()
         {
-            Items = new HashSet<Item>();
+            Items = new List<Item>();
         }
 
         public int QualityLevelId { get; set; }
