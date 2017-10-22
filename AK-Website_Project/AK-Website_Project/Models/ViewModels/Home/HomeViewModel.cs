@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace AK_Website_Project.Models.ViewModels.Home
 {
@@ -21,6 +18,7 @@ namespace AK_Website_Project.Models.ViewModels.Home
             AlchemyList = getAlchemyList();
             CookingList = getCookingList();
         }
+        //Hardcoded for now
         private List<string> getCraftingList()
         {
             List<string> templist = new List<string>();
@@ -29,7 +27,7 @@ namespace AK_Website_Project.Models.ViewModels.Home
             templist.Add("Lv.90 Holy Spirit");
             return templist;
         }
-
+        //Hardcoded for now
         private List<string> getFishingList()
         {
             List<string> templist = new List<string>();
@@ -38,7 +36,7 @@ namespace AK_Website_Project.Models.ViewModels.Home
             templist.Add("Lv.6 Gear");
             return templist;
         }
-
+        //Hardcoded for now
         private List<string> getGatheringList()
         {
             List<string> templist = new List<string>();
@@ -48,6 +46,7 @@ namespace AK_Website_Project.Models.ViewModels.Home
             templist.Add("Tanglevines Cascade");
             return templist;
         }
+        //Hardcoded for now
         private List<string> getAlchemyList()
         {
             List<string> templist = new List<string>();
@@ -55,6 +54,7 @@ namespace AK_Website_Project.Models.ViewModels.Home
             templist.Add("Tonics");
             return templist;
         }
+        //Hardcoded for now
         private List<string> getCookingList()
         {
             List<string> templist = new List<string>();
