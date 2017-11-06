@@ -15,6 +15,25 @@
 
 </head>
 <body>
-    @RenderBody()
+    <div class="container-fluid">
+        <div class="page-header text-center col-xs-12">
+            <h1>
+                <label>Aura Kingdom - Refining Resources</label>
+            </h1>
+            <div>
+                @if (Session["Username"] == null)
+                {
+                    <a id="loginLink" href="@Url.Action("Login", "User")" class="btn btn-default">Login</a>
+                    <a id="signUpLink" href="@Url.Action("SignUp", "User")" class="btn btn-default">Sign up</a>
+                }
+                else
+                {
+                    @Html.Label("Logged in as " + Session["Username"].ToString())
+                    <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
+                }
+            </div>
+        </div>
+        @RenderBody()
+    </div>
 </body>
 </html>

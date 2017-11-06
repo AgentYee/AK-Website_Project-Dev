@@ -1,0 +1,52 @@
+﻿@model AK_Website_Project.Models.ViewModels.User.UserLoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+
+    <script type="text/javascript">
+        var loginLink = $("#loginLink");
+        if (loginLink != null)
+        {
+            loginLink.hide();
+        }
+    </script>
+
+    <h2>Log into your account</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Fill out this form</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-xs-12">
+                <div>
+                    @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label" } })
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control"} })
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" value="Login" class="btn btn-success">Login</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

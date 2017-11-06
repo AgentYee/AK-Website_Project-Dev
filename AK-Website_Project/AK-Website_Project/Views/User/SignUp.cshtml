@@ -1,0 +1,55 @@
+﻿@model AK_Website_Project.Models.ViewModels.User.UserRegisterViewModel
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2>Sign up for an account</h2>
+
+    <script type="text/javascript">
+        var signUp = $("#signUpLink");
+        if (signUp != null) {
+            signUp.hide();
+        }
+    </script>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Fill out this form</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div>
+                    @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label" } })
+                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password", new { htmlAttributes = new { @class = "control-label" } })
+                    @Html.PasswordFor(model => model.Username, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">Create account</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
