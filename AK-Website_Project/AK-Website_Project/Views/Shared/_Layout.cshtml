@@ -16,15 +16,20 @@
     <!-- JQuery DataTables -->
     <script src="~/Content/DataTables/datatables.min.js"></script>
     <link href="~/Content/DataTables/datatables.min.css" rel="stylesheet" />
-
+    <style>
+        #footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="page-header text-center col-xs-12">
-            <h1>
-                <label>Aura Kingdom - Refining Resources</label>
-            </h1>
-            <div>
+        <nav class="navbar form-inline" style="background-color:black; margin-bottom: 0%;">
+            <div style="float:right; margin-top:0.5%; margin-right: 0.5%">
                 @if (Session["Username"] == null)
                 {
                     <a id="loginLink" href="@Url.Action("Login", "User")" class="btn btn-default">Login</a>
@@ -36,8 +41,18 @@
                     <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
                 }
             </div>
+        </nav>
+        <div class="page-header text-center col-xs-12" style="margin-top:0%">
+            <h1>
+                <label>Aura Kingdom - Refining Resources</label>
+            </h1>
         </div>
         @RenderBody()
     </div>
+   <footer id="footer" class="info">
+       <hr />
+       <h5>All Rights Reserved - 2017</h5>
+       <hr />
+   </footer>
 </body>
 </html>

@@ -83,6 +83,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -134,6 +137,39 @@
     <Content Include="Content\Bootstrap\js\bootstrap.js" />
     <Content Include="Content\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Bootstrap\js\npm.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\images\sort_asc.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\images\sort_both.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\images\sort_desc.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.bootstrap.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.foundation.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.foundation.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.jqueryui.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.semanticui.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\jquery.dataTables.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.16\js\jquery.dataTables.min.js" />
+    <Content Include="Content\DataTables\datatables.css" />
+    <Content Include="Content\DataTables\datatables.js" />
+    <Content Include="Content\DataTables\datatables.min.css" />
+    <Content Include="Content\DataTables\datatables.min.js" />
     <Content Include="Content\JQuery\jquery-3.2.1.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
