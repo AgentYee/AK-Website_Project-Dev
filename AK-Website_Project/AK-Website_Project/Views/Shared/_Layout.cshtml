@@ -37,7 +37,7 @@
                 }
                 else
                 {
-                    @Html.Label("Logged in as " + Session["Username"].ToString())
+                    @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:white;" })
                     <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
                 }
             </div>

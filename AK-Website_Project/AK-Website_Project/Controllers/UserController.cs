@@ -54,6 +54,7 @@ namespace AK_Website_Project.Controllers
         {
             if (Session["Username"] == null)
             {
+                //TODO: Remove this
                 if (!ModelState.IsValid)
                     return View(new UserLoginViewModel());
 
@@ -63,10 +64,10 @@ namespace AK_Website_Project.Controllers
                 if (repo.CredentialsAreValid(username, password))
                 {
                     Session["Username"] = username;
+                    return RedirectToAction("Index", "Home");
                 }
                 return View(new UserLoginViewModel());
             }
-
             return RedirectToAction("Index", "Home");
         }
 
@@ -76,6 +77,7 @@ namespace AK_Website_Project.Controllers
         {
             if (Session["Username"] == null)
             {
+                //TODO: Remove this
                 if (!ModelState.IsValid)
                     return View(new UserRegisterViewModel());
 

@@ -45,7 +45,7 @@ namespace AK_Website_Project.Controllers.Home
 
             using (Entities dc = new Entities())
             {
-                dc.Configuration.LazyLoadingEnabled = false; // if your table is relational, contain foreign key
+                dc.Configuration.LazyLoadingEnabled = false;
                 var v = (from a in dc.Items select a);
 
                 //SEARCHING...

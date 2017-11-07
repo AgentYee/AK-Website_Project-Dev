@@ -58,10 +58,10 @@
 
             //jQuery DataTables initialization
             $('#homeSearchTable').DataTable({
-                "processing": true, // for show processing bar
-                "serverSide": true, // for process on server side
-                "orderMulti": false, // for disable multi column order
-                "dom": '<"top"i>rt<"bottom"lp><"clear">', // for hide default global search box // little confusion? don't worry I explained in the tutorial website
+                "processing": true,
+                "serverSide": true,
+                "orderMulti": false,
+                "dom": '<"top"i>rt<"bottom"lp><"clear">',
                 "ajax": {
                     "url": "/Home/LoadDataTable",
                     "type": "POST",
@@ -74,10 +74,10 @@
                 ]
             });
 
-            //Apply Custom search on jQuery DataTables here
+            //Custom search on the datatable here
             oTable = $('#homeSearchTable').DataTable();
             $('#btnSearch').click(function () {
-                //Apply search for Employee Name // DataTable column index 0
+                //Apply search for Item Name // DataTable column index 0
                 oTable.columns(0).search($('#txtItemName').val());
                 //hit search on server
                 oTable.draw();
