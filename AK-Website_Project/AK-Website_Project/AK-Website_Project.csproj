@@ -137,6 +137,16 @@
     <Content Include="Content\JQuery\jquery-3.2.1.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Entities\DB_Entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Entities.edmx</DependentUpon>
+      <LastGenOutput>DB_Entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Entities\DB_Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_Entities.edmx</DependentUpon>
+      <LastGenOutput>DB_Entities.cs</LastGenOutput>
+    </Content>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
@@ -146,22 +156,61 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAL\CategoryDao.cs" />
+    <Compile Include="DAL\Interface\ICategoryDao.cs" />
+    <Compile Include="DAL\Interface\IUserDao.cs" />
+    <Compile Include="DAL\UserDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entities\Category.cs" />
-    <Compile Include="Models\Entities\Comment.cs" />
-    <Compile Include="Models\Entities\Database_Entities.cs" />
-    <Compile Include="Models\Entities\Item.cs" />
-    <Compile Include="Models\Entities\Picture.cs" />
-    <Compile Include="Models\Entities\QualityLevel.cs" />
-    <Compile Include="Models\Entities\Role.cs" />
-    <Compile Include="Models\Entities\SubCategory.cs" />
-    <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Helpers\EncryptionHelper.cs" />
+    <Compile Include="Models\Entities\Category.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Comment.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\DB_Entities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Entities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\DB_Entities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\DB_Entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Entities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Item.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Picture.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\QualityLevel.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Role.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\SubCategory.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\User.cs">
+      <DependentUpon>DB_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\Comment\CommentViewModel.cs" />
     <Compile Include="Models\ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserLoginViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserRegisterViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Interface\IUserRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -182,6 +231,13 @@
     <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\SignUp.cshtml" />
+    <EntityDeploy Include="Models\Entities\DB_Entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_Entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entities\DB_Entities.edmx.diagram">
+      <DependentUpon>DB_Entities.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,6 +247,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

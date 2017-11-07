@@ -4,13 +4,13 @@ namespace AK_Website_Project.Models.ViewModels.User
 {
     public class UserRegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Please enter a username.")]
         [MinLength(4)]
         public string Username;
-        [Required]
+        [Required(ErrorMessage = "Please enter a password.")]
         [MinLength(8)]
         public string Password;
-        [Required]
+        [Required(ErrorMessage = "Please confirm your password.")]
         [MinLength(8)]
         public string ConfirmPassword;
     }

@@ -4,9 +4,9 @@ namespace AK_Website_Project.Models.ViewModels.User
 {
     public class UserLoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Please enter your username.")]
         public string Username;
-        [Required]
+        [Required(ErrorMessage = "Please enter your password.")]
         public string Password;
     }
 }

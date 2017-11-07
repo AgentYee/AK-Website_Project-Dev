@@ -15,7 +15,7 @@
         }
     </script>
     
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("SignUp", "User", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -27,21 +27,21 @@
             <div class="form-group">
                 <div>
                     @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label" } })
-                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
+                    <input type="text" name="username" id="inputUsername" class="form-control" />
                 </div>
             </div>
 
             <div class="form-group">
                 <div>
                     @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
-                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    <input type="password" name="password" id="inputPassword" class="form-control"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <div>
                     @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password", new { htmlAttributes = new { @class = "control-label" } })
-                    @Html.PasswordFor(model => model.Username, new { @class = "form-control" })
+                    <input type="password" name="cpassword" id="inputCPassword" class="form-control" />
                 </div>
             </div>
 
