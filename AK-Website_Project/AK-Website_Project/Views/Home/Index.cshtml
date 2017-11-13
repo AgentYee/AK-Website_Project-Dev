@@ -3,56 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-fluid">
-    @*<script type="text/javascript">
-        //$(document).ready(function () {
-        //    $("#homeSearchTable").DataTable({
-        //        "processing": true, // for show progress bar
-        //        "serverSide": true, // for process server side
-        //        "filter": false, 
-        //        "orderMulti": false, // for disable multiple column at once
-        //        "dom": '<"top"if>rt<"bottom"lp><"clear">',
-        //        "ajax": {
-        //            "url": "/Home/LoadDataTable",
-        //            "type": "POST",
-        //            "datatype": "json"
-        //        },
-        //        "columns": [
-        //            { "data": "Name", "name": "Name", "autoWidth": true },
-        //            { "data": "SubCategoryId", "name": "SubCategoryId", "autoWidth": true },
-        //            { "data": "QualityLevelId", "name": "QualityLevelId", "autoWidth": true },
-        //        ]
-        //    });
-        //});
-
-        $('#homeSearchTable').DataTable({
-            "processing": true, // for show processing bar
-            "serverSide": true, // for process on server side
-            "orderMulti": false, // for disable multi column order
-            "dom": '<"top"i>rt<"bottom"lp><"clear">',
-            "ajax": {
-                "url": "/home/LoadDataTable",
-                "type": "POST",
-                "datatype": "json"
-            },
-            "columns": [
-                { "data": "Name", "name": "Name", "autoWidth": true },
-                { "data": "SubCategoryId", "name": "SubCategoryId", "autoWidth": true },
-                { "data": "QualityLevelId", "name": "QualityLevelId", "autoWidth": true },
-            ]
-        });
-
-        //Apply Custom search on jQuery DataTables here
-        oTable = $('#homeSearchTable').DataTable();
-        $('#btnSearch').click(function () {
-            //Apply search for Employee Name // DataTable column index 0
-            oTable.columns(0).search($('#txtItemName').val().trim());
-            //hit search on server
-            oTable.draw();
-        });
-
-    </script>*@
-
-
     <script>
         $(document).ready(function () {
 
