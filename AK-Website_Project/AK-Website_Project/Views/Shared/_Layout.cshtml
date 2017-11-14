@@ -7,6 +7,7 @@
 
     <!-- JQuery -->
     <script src="~/Content/JQuery/jquery-3.2.1.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
 
     <!-- Bootstrap -->
     <script src="~/Content/Bootstrap/js/bootstrap.min.js"></script>
@@ -17,46 +18,80 @@
     <script src="~/Content/DataTables/datatables.min.js"></script>
     <link href="~/Content/DataTables/datatables.min.css" rel="stylesheet" />
     <style>
+        body {
+            background-repeat: no-repeat;
+            background-image: url('../../Content/Resources/Images/Aura_Kingdom_Artwork_2.jpg');
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        #container {
+            min-height: 100%;
+            position: relative;
+        }
+
+        #header {
+        }
+
+        #body {
+            padding: 0.5%;
+            padding-bottom: 10%;
+        }
+
         #footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            background-color: white;
+            position: absolute;
             text-align: center;
+            bottom: 0;
             width: 100%;
+            margin-bottom: 1%
         }
     </style>
 </head>
-<body style="background: url('../../Content/Resources/Images/Aura_Kingdom_Artwork_2.jpg'); z-index:-1;">
+<body>
     <div class="container-fluid">
-        <nav class="navbar form-inline" style="background-color:black; margin-bottom: 0%;">
-            <div style="float:right; margin-top:0.5%; margin-right: 0.5%">
-                @if (Session["Username"] == null)
-                {
-                    <a id="loginLink" href="@Url.Action("Login", "User")" class="btn btn-default">Login</a>
-                    <a id="signUpLink" href="@Url.Action("SignUp", "User")" class="btn btn-default">Sign up</a>
-                }
-                else
-                {
-                    @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:white;" })
-                    <a id="editProfileLink" href="@Url.Action("Account", "User")" class="btn btn-default">Log out</a>
-                    <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
-                }
+        <div id="container">
+            <div id="header">
+                <nav class="navbar form-inline" style="background-color:black; margin-top:0.5%; margin-bottom:0.5%; padding-bottom:0.5%">
+                    <div style="float:right; margin-top:0.5%; margin-right: 0.5%">
+                        @if (Session["Username"] == null)
+                        {
+                            <a id="loginLink" href="@Url.Action("Login", "User")" class="btn btn-default">Login</a>
+                            <a id="signUpLink" href="@Url.Action("SignUp", "User")" class="btn btn-default">Sign up</a>
+                        }
+                        else
+                        {
+                            @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:white;" })
+                            <a id="editProfileLink" href="@Url.Action("Account", "User")" class="btn btn-default">Log out</a>
+                            <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
+                        }
+                    </div>
+                </nav>
+                <div class="page-header text-center col-xs-12" style="margin-top:0%">
+                    <h1>
+                        <label>
+                        <a href="@Url.Action("Index", "Home")" style="text-decoration:none;">Aura Kingdom - Refining Resources</a></label>
+                    </h1>
+                </div>
             </div>
-        </nav>
-        <div class="page-header text-center col-xs-12" style="margin-top:0%">
-            <h1>
-                <label>Aura Kingdom - Refining Resources</label>
-            </h1>
+            <div id="body">
+                @{
+                    Html.RenderAction("RenderDropdowns", "Home");
+                }
+                @RenderBody()
+            </div>
+            <div id="footer" class="img-rounded">
+                <h5
+                    >All Rights Reserved - 2017</h5>
+            </div>
         </div>
-        @{
-            Html.RenderAction("RenderDropdowns", "Home");
-        }
-        @RenderBody()
     </div>
-   <footer id="footer" class="info">
-       <hr />
-       <h5>All Rights Reserved - 2017</h5>
-       <hr />
-   </footer>
 </body>
 </html>

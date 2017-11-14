@@ -12,6 +12,7 @@
                 "processing": true,
                 "serverSide": true,
                 "orderMulti": false,
+                "autoWidth": false,
                 "dom": '<"top"i>rt<"bottom"lp><"clear">',
                 "ajax": {
                     "url": "/Home/LoadDataTable",
@@ -19,9 +20,9 @@
                     "datatype": "json"
                 },
                 "columns": [
-                    { "data": "Name", "name": "Name", "autoWidth": true },
-                    { "data": "SubCategoryName", "name": "SubCategoryName", "autoWidth": true },
-                    { "data": "QualityName", "name": "QualityName", "autoWidth": true },
+                    { "data": "Name", "name": "Name", "autoWidth": false },
+                    { "data": "SubCategoryName", "name": "SubCategoryName", "autoWidth": false },
+                    { "data": "QualityName", "name": "QualityName", "autoWidth": false },
                 ]
             });
 
@@ -37,8 +38,8 @@
     </script>
 
     <div class="form-group">
-        <div>
-            <div class="col-xs-12" style="background-color:#f5f5f5;">
+        <div class="img-rounded">
+            <div class="col-xs-12" style="background-color:lightgray;">
                 <h4>Search Panel</h4>
                 <table>
                     <tbody>
@@ -52,8 +53,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-xs-12">
-                <table id="homeSearchTable" class="table-bordered table table-responsive table-hover table-striped">
+            <div class="col-xs-12" style="background-color:aliceblue">
+                <table style="overflow: hidden" id="homeSearchTable" class="table-responsive table table-striped table-hover nowrap">
                     <thead>
                         <tr>
                             <th>Item name</th>
