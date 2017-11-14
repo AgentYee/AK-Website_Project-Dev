@@ -4,7 +4,7 @@ using AK_Website_Project.Repository;
 using AK_Website_Project.Repository.Interface;
 using System.Web.Mvc;
 
-namespace AK_Website_Project.Controllers
+namespace AK_Website_Project.Controllers.User
 {
     public class UserController : Controller
     {
@@ -25,9 +25,19 @@ namespace AK_Website_Project.Controllers
         public ActionResult Account()
         {
             if (Session["Username"] == null)
-                return View();
+                return RedirectToAction("Index", "Home");
+            
 
-            return RedirectToAction("Index", "Home");
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Account(string test)
+        {
+            if (Session["Username"] == null)
+                return RedirectToAction("Index", "Home");
+
+            return View();
         }
 
         [HttpGet]

@@ -58,7 +58,15 @@ namespace AK_Website_Project.DAL
 
         public List<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            using (Entities ctx = new Entities())
+            {
+                var list = ctx.Users;
+
+                if (list != null)
+                    return list.ToList();
+
+                return new List<User>();
+            }
         }
 
         public User GetUserById(int userId)

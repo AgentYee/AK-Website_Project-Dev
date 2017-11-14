@@ -1,10 +1,11 @@
-﻿using AK_Website_Project.Models.Entities;
+﻿using AK_Website_Project.DAL.Interface;
+using AK_Website_Project.Models.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AK_Website_Project.DAL
 {
-    public class CategoryDao
+    public class CategoryDao : ICategoryDao
     {
         public List<Category> GetCategoryList()
         {

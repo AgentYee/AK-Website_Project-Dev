@@ -26,7 +26,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background: url('../../Content/Resources/Images/Aura_Kingdom_Artwork_2.jpg'); z-index:-1;">
     <div class="container-fluid">
         <nav class="navbar form-inline" style="background-color:black; margin-bottom: 0%;">
             <div style="float:right; margin-top:0.5%; margin-right: 0.5%">
@@ -38,6 +38,7 @@
                 else
                 {
                     @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:white;" })
+                    <a id="editProfileLink" href="@Url.Action("Account", "User")" class="btn btn-default">Log out</a>
                     <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
                 }
             </div>
@@ -47,6 +48,9 @@
                 <label>Aura Kingdom - Refining Resources</label>
             </h1>
         </div>
+        @{
+            Html.RenderAction("RenderDropdowns", "Home");
+        }
         @RenderBody()
     </div>
    <footer id="footer" class="info">

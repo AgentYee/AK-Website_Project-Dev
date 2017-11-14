@@ -1,0 +1,81 @@
+﻿@model AK_Website_Project.Models.ViewModels.Home.HomeViewModel
+<div class="col-xs-2 dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+        Crafting
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <!-- Subject to change, still need to enter quite a bit of data -->
+        @foreach (var item in Model.CraftingList)
+        {
+            <li><a href="#">@item</a></li>
+        }
+    </ul>
+</div>
+
+<div class="col-xs-2 dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+        Fishing
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <!-- Subject to change, still need to enter quite a bit of data -->
+        @foreach (var item in Model.FishingList)
+        {
+            <li><a href="#">@item</a></li>
+        }
+    </ul>
+</div>
+
+<div class="col-xs-2 dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+        Gathering
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <!-- Subject to change, still need to enter quite a bit of data -->
+        @foreach (var item in Model.GatheringList)
+        {
+            <li><a href="#">@item</a></li>
+        }
+    </ul>
+</div>
+
+<div class="col-xs-2 dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+        Alchemy
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <!-- Subject to change, still need to enter quite a bit of data -->
+        @foreach (var item in Model.AlchemyList)
+        {
+            <li><a href="#">@item</a></li>
+        }
+    </ul>
+</div>
+
+<div class="col-xs-2 dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+        Cooking
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <!-- Subject to change, still need to enter quite a bit of data -->
+        @foreach (var item in Model.CookingList)
+        {
+            <li><a href="#">@item</a></li>
+        }
+    </ul>
+</div>
+<div class="col-xs-2 dropdown" style="margin-bottom: 2%">
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+        Placeholder
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <!-- Subject to change, still need to enter quite a bit of data -->
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+<hr />

@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace AK_Website_Project.Controllers.Home
 {
@@ -22,6 +23,7 @@ namespace AK_Website_Project.Controllers.Home
         {
 
         }
+
         [AllowAnonymous]
         [HttpPost]
         public ActionResult LoadDataTable()
@@ -42,11 +44,12 @@ namespace AK_Website_Project.Controllers.Home
             int skip = start != null ? Convert.ToInt16(start) : 0;
             int recordsTotal = 0;
 
-
             using (Entities dc = new Entities())
             {
                 dc.Configuration.LazyLoadingEnabled = false;
-                var v = (from a in dc.Items select a);
+                var v = (from a in dc.Items
+                         .Include(x => x.QualityLevel)
+                         .Include(x => x.SubCategory) select new { a.ItemId, a.Name, QualityName = a.QualityLevel.Name, SubCategoryName = a.SubCategory.Name });
 
                 //SEARCHING...
                 if (!string.IsNullOrEmpty(itemName))
@@ -64,8 +67,13 @@ namespace AK_Website_Project.Controllers.Home
                 var data = v.Skip(skip).Take(pageSize).ToList();
                 return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data },
                     JsonRequestBehavior.AllowGet);
-
             }
+        }
+
+        public PartialViewResult RenderDropdowns()
+        {
+            var model = new HomeViewModel();
+            return PartialView("~/Views/Shared/_DropdownsPartial.cshtml", model);
         }
     }
 }
