@@ -80,7 +80,10 @@ namespace AK_Website_Project.DAL
             {
                 Item item = ctx.Items
                      .Include(x => x.Comments)
+                     .Include(x => x.Comments.Select(c => c.User))
                      .Include(x => x.QualityLevel)
+                     .Include(x => x.SubCategory)
+                     .Include(x => x.SubCategory.Category)
                      .FirstOrDefault(x => x.ItemId == itemId);
 
                 if (item != null)

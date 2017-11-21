@@ -5,23 +5,30 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Web.Mvc;
 using System.Data.Entity;
+using AK_Website_Project.Repository.Interface;
+using AK_Website_Project.DAL;
+using AK_Website_Project.Repository;
 
 namespace AK_Website_Project.Controllers.Home
 {
     public class HomeController : Controller
     {
+        private readonly ICategoryRepository repo;
+
+        public HomeController(ICategoryRepository _repo)
+        {
+            repo = _repo;
+        }
+
+        public HomeController()
+        {
+            repo = new CategoryRepository(new CategoryDao());
+        }
         // GET: Home
         [HttpGet]
         public ActionResult Index()
         {
-            HomeViewModel model = new HomeViewModel();
-            PopulateDropdownLists(model);
-            return View(model);
-        }
-
-        private void PopulateDropdownLists(HomeViewModel model)
-        {
-
+            return View();
         }
 
         [AllowAnonymous]
@@ -73,6 +80,7 @@ namespace AK_Website_Project.Controllers.Home
         public PartialViewResult RenderDropdowns()
         {
             var model = new HomeViewModel();
+            model.Categories = repo.GetCategoryList();
             return PartialView("~/Views/Shared/_DropdownsPartial.cshtml", model);
         }
     }

@@ -5,20 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container">
+    <!--Fil d'ariane-->
+    <h5>
+        <a href="/Home/Index">Home</a>
+        | <a href="@string.Format("/Category/View/" + Model.SubCategory.ParentCategoryId)">@Model.SubCategory.Category.Name</a>
+        | <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.SubCategory.Name</a>
+    </h5>
+</div>
+
 <h2>Details</h2>
 
 <div>
-    <h4>ItemViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemId)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.QualityLevel.Name)
+            @Html.DisplayName("Quality Level")
         </dt>
 
         <dd>
@@ -36,16 +36,32 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SubCategoryId)
+            @Html.DisplayName("Sub Category")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.SubCategoryId)
+            @Html.DisplayFor(model => model.SubCategory.Name)
         </dd>
-
     </dl>
+    <div id="divComments">
+        <ul>
+            @foreach (var item in Model.Comments)
+            {
+                <li>@string.Format(item.User.Username + ": " + item.Content)</li>
+            }
+        </ul>
+        <div>
+            @if (Session["Username"] != null)
+            {
+                @Html.BeginForm("PostComment", "Item", FormMethod.Post)
+                {
+
+                }
+            }
+            else
+            {
+                <h2>You must be logged in to leave a comment.</h2>
+            }
+        </div>
+    </div>
 </div>
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@

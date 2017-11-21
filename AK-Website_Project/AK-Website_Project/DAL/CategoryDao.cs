@@ -2,6 +2,7 @@
 using AK_Website_Project.Models.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace AK_Website_Project.DAL
 {
@@ -11,7 +12,8 @@ namespace AK_Website_Project.DAL
         {
             using (Entities ctx = new Entities())
             {
-                var list = ctx.Categories;
+                var list = ctx.Categories
+                    .Include(x => x.SubCategories);
 
                 if (list != null)
                     return list.ToList();

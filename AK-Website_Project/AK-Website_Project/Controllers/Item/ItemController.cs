@@ -36,6 +36,8 @@ namespace AK_Website_Project.Controllers.Item
             itemVM.Name = item.Name;
             itemVM.QualityLevel = item.QualityLevel;
             itemVM.SubCategoryId = item.SubCategoryId;
+            itemVM.Comments = item.Comments;
+            itemVM.SubCategory = item.SubCategory;
 
             return View(itemVM);
         }

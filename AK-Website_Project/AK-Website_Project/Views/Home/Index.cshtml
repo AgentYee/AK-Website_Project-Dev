@@ -1,5 +1,4 @@
-﻿@model AK_Website_Project.Models.ViewModels.Home.HomeViewModel
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-fluid">
@@ -39,12 +38,16 @@
 
     <div class="form-group">
         <div class="img-rounded">
-            <div class="col-xs-12" style="background-color:lightgray;">
-                <h4>Search Panel</h4>
+            <div class="col-xs-12" style="background-color:black;">
+                <h4 style="background-color:black">
+                    <label style="color:white">
+                        Search Panel
+                    </label>
+                </h4>
                 <table>
                     <tbody>
                         <tr>
-                            <td>Item Name</td>
+                            <td style="color:white">Item Name</td>
                             <td><input type="text" id="txtItemName" /></td>
                             <td>
                                 <input type="button" value="Search" id="btnSearch" />
