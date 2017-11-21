@@ -216,8 +216,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Category\CategoryController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Item\ItemController.cs" />
+    <Compile Include="Controllers\SubCategory\SubCategoryController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="DAL\CategoryDao.cs" />
     <Compile Include="DAL\Interface\ICategoryDao.cs" />
@@ -273,6 +275,7 @@
     <Compile Include="Models\ViewModels\Comment\CommentViewModel.cs" />
     <Compile Include="Models\ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="Models\ViewModels\Item\ItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\SubCategory\SubCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserLoginViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserRegisterViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserViewModel.cs" />
@@ -314,6 +317,7 @@
     </Content>
     <Content Include="Views\Item\Details.cshtml" />
     <Content Include="Views\Shared\_DropdownsPartial.cshtml" />
+    <Content Include="Views\SubCategory\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -323,6 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
+<div>
     <!--Fil d'ariane-->
     <h5>
         <a href="/Home/Index">Home</a>
@@ -50,7 +50,7 @@
                 <li>@string.Format(item.User.Username + ": " + item.Content)</li>
             }
         </ul>
-        <div>
+        <div class="img-rounded">
             @if (Session["Username"] != null)
             {
                 @Html.BeginForm("PostComment", "Item", FormMethod.Post)
@@ -60,7 +60,7 @@
             }
             else
             {
-                <h2>You must be logged in to leave a comment.</h2>
+                <h3>You must be logged in to leave a comment.</h3>
             }
         </div>
     </div>
