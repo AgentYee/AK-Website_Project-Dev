@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AK_Website_Project.Models.Entities;
+using System.Data.Entity;
 
 namespace AK_Website_Project.DAL
 {
@@ -37,7 +38,9 @@ namespace AK_Website_Project.DAL
         {
             using (Entities ctx = new Entities())
             {
-                var subCategory = ctx.SubCategories.Select(x => x.SubCategoryId == subId);
+                var subCategory = ctx.SubCategories
+                    .Include(x => x.Items)
+                    .FirstOrDefault(x => x.SubCategoryId == subId);
 
                 if (subCategory != null)
                     return subCategory as SubCategory;
