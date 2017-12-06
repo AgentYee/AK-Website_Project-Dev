@@ -42,54 +42,45 @@
 
         #body {
             padding: 0.5%;
-            padding-bottom: 10%;
-        }
-
-        #footer {
-            background-color: white;
-            position: absolute;
-            text-align: center;
-            bottom: 0;
-            width: 100%;
-            margin-bottom: 1%
+            padding-bottom: 7%;
         }
     </style>
 </head>
 <body>
     <div class="container-fluid">
-        <div id="container">
-            <div id="header">
-                <nav class="navbar form-inline" style="background-color:black; margin-top:0.5%; margin-bottom:0.5%; padding-bottom:0.5%">
-                    <div style="float:right; margin-top:0.5%; margin-right: 0.5%">
-                        @if (Session["Username"] == null)
-                        {
-                            <a id="loginLink" href="@Url.Action("Login", "User")" class="btn btn-default">Login</a>
-                            <a id="signUpLink" href="@Url.Action("SignUp", "User")" class="btn btn-default">Sign up</a>
-                        }
-                        else
-                        {
-                            @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:white;" })
-                            <a id="editProfileLink" href="@Url.Action("Account", "User")" class="btn btn-default">Log out</a>
-                            <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
-                        }
-                    </div>
-                </nav>
-                <div class="page-header text-center col-xs-12" style="margin-top:0%">
-                    <h1>
-                        <label>
-                        <a href="@Url.Action("Index", "Home")" style="text-decoration:none;">Aura Kingdom - Refining Resources</a></label>
-                    </h1>
+        <div id="header">
+            <nav class="navbar form-inline" style="background-color:black; margin-top:0.5%; margin-bottom:0.5%; padding-bottom:0.5%; margin-left:1.3%; margin-right:1.3%">
+                <div style="float:right; margin-top:0.5%; margin-right: 0.5%">
+                    @if (Session["Username"] == null)
+                    {
+                        <a id="loginLink" href="@Url.Action("Login", "User")" class="btn btn-default">Login</a>
+                        <a id="signUpLink" href="@Url.Action("SignUp", "User")" class="btn btn-default">Sign up</a>
+                    }
+                    else
+                    {
+                        @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:white;" })
+                        <a id="editProfileLink" href="@Url.Action("Account", "User")" class="btn btn-default">Edit Profile</a>
+                        <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default">Log out</a>
+                    }
                 </div>
+            </nav>
+            <div class="text-center col-xs-12" style="margin-top:0%">
+                <h1>
+                    <label>
+                        <a href="@Url.Action("Index", "Home")" style="text-decoration:none;">Aura Kingdom - Refining Resources</a>
+                    </label>
+                </h1>
             </div>
-            <div id="body">
-                @{
-                    Html.RenderAction("RenderDropdowns", "Home");
-                }
-                @RenderBody()
-            </div>
-            <div id="footer" class="img-rounded">
-                <h5
-                    >All Rights Reserved - 2017</h5>
+        </div>
+        <div id="body">
+            @{
+                Html.RenderAction("RenderDropdowns", "Home");
+            }
+            @RenderBody()
+        </div>
+        <div class="card container-fluid text-center img-rounded" style="background-color:white; margin-bottom: 1%; width:97.5%">
+            <div class="card-footer text-muted">
+                <h5>All Rights Reserved - 2017</h5>
             </div>
         </div>
     </div>

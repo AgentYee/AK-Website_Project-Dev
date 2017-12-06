@@ -278,6 +278,7 @@
     <Compile Include="Models\ViewModels\Item\ItemViewModel.cs" />
     <Compile Include="Models\ViewModels\SubCategory\SubCategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserLoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\UserProfileViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserRegisterViewModel.cs" />
     <Compile Include="Models\ViewModels\User\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

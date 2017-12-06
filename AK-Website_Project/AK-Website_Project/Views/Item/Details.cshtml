@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+<div class="container-fluid">
     <!--Fil d'ariane-->
-    <h5>
-        <a href="/Home/Index">Home</a>
-        | <a href="@string.Format("/Category/View/" + Model.SubCategory.ParentCategoryId)">@Model.SubCategory.Category.Name</a>
-        | <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.SubCategory.Name</a>
-    </h5>
+    <span class="breadcrumb">
+        <a href="/Home/Index">Home</a> &nbsp;/&nbsp;
+        <a href="@string.Format("/Category/View/" + Model.SubCategory.ParentCategoryId)">@Model.SubCategory.Category.Name</a> &nbsp;/&nbsp;
+        <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.SubCategory.Name</a>
+    </span>
 </div>
 
 <h2>Details</h2>
@@ -53,9 +53,9 @@
         <div class="img-rounded">
             @if (Session["Username"] != null)
             {
-                @Html.BeginForm("PostComment", "Item", FormMethod.Post)
+                using (Html.BeginForm("PostComment", "Item", FormMethod.Post))
                 {
-
+                    <div><p>test</p></div>
                 }
             }
             else

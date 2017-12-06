@@ -5,17 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <!--Fil d'ariane-->
-    <h5>
-        <a href="/Home/Index">Home</a>
-        | <a href="@string.Format("/Category/View/" + Model.Category.CategoryId)">@Model.Category.Name</a>
-        | <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.Name</a>
-    </h5>
-</div>
-
-<h2>@Model.Name</h2>
 <div class="container-fluid">
+    <!--Fil d'ariane-->
+    <span class="breadcrumb">
+        <a href="/Home/Index">Home</a> &nbsp;/&nbsp;
+        <a href="@string.Format("/Category/View/" + Model.Category.CategoryId)">@Model.Category.Name</a> &nbsp;/&nbsp;
+        <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.Name</a>
+    </span>
+</div>
+<div class="container-fluid">
+    <h2>@Model.Name</h2>
     <script>
         $(document).ready(function () {
 

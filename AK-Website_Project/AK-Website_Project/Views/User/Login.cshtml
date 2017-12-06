@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center container">
+<div class="container-fluid">
 
     <script type="text/javascript">
         var loginLink = $("#loginLink");
@@ -13,35 +13,22 @@
             loginLink.hide();
         }
     </script>
-
-    <h2>Log into your account</h2>
     @using (Html.BeginForm("Login", "User", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>Fill out this form</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div class="col-xs-12">
-                <div>
-                    @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label" } })
-                    <input type="text" name="username" id="inputUsername" class="form-control" />
+        <div class="card text-center img-rounded" style="margin-right:25%; margin-left:25%; background-color:white; padding:1%;">
+            <div class="card-body">
+                <h4 class="card-title">Login into your account</h4>
+                <p class="card-text">Fill out this form</p>
+                <div class="col-xs-12">
+                    @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label col-xs-4" } })
+                    <input type="text" name="username" id="inputUsername" class="form-control col-xs-6" />
                 </div>
-            </div>
-
-            <div>
-                <div>
-                    @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
-                    <input type="password" name="password" id="inputPassword" class="form-control" />
+                <div class="col-xs-12">
+                    @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label col-xs-4" } })
+                    <input type="password" name="password" id="inputPassword" class="form-control col-xs-6" />
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" value="Login" class="btn btn-success">Login</button>
-                </div>
+                <button type="submit" value="Login" class="btn btn-success">Login</button>
             </div>
         </div>
     }

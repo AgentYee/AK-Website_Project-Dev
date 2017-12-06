@@ -6,50 +6,42 @@
 }
 
 <div class="text-center container">
-    <h2>Sign up for an account</h2>
-
     <script type="text/javascript">
         var signUp = $("#signUpLink");
         if (signUp != null) {
             signUp.hide();
         }
     </script>
-    
     @using (Html.BeginForm("SignUp", "User", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Fill out this form</h4>
-            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-group">
-                <div>
-                    @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label" } })
-                    <input type="text" name="username" id="inputUsername" class="form-control" />
+            <div class="card text-center img-rounded" style="margin-right:25%; margin-left:25%; background-color:white; padding:1%;">
+                <div class="card-body">
+                    <h4 class="card-title">Sign up for an account</h4>
+                    <p class="card-text">Fill out this form</p>
+                    <div>
+                        @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label" } })
+                        <input type="text" name="username" id="inputUsername" class="form-control" />
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
+                        <input type="password" name="password" id="inputPassword" class="form-control" />
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password", new { htmlAttributes = new { @class = "control-label" } })
+                        <input type="password" name="cpassword" id="inputCPassword" class="form-control" />
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div>
-                    @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
-                    <input type="password" name="password" id="inputPassword" class="form-control"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div>
-                    @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password", new { htmlAttributes = new { @class = "control-label" } })
-                    <input type="password" name="cpassword" id="inputCPassword" class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="card-footer text-muted">
                     <button type="submit" class="btn btn-success">Create account</button>
                 </div>
             </div>
+
         </div>
+
     }
 </div>

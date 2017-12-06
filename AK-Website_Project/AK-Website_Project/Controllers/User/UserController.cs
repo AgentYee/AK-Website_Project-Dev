@@ -2,6 +2,7 @@
 using AK_Website_Project.Models.ViewModels.User;
 using AK_Website_Project.Repository;
 using AK_Website_Project.Repository.Interface;
+using System;
 using System.Web.Mvc;
 
 namespace AK_Website_Project.Controllers.User
@@ -20,23 +21,12 @@ namespace AK_Website_Project.Controllers.User
             repo = new UserRepository(new UserDao());
         }
 
-
-        // GET: User
         public ActionResult Account()
         {
             if (Session["Username"] == null)
                 return RedirectToAction("Index", "Home");
             
-
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Account(string test)
-        {
-            if (Session["Username"] == null)
-                return RedirectToAction("Index", "Home");
-
+            
             return View();
         }
 
