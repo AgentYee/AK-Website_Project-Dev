@@ -18,5 +18,10 @@ namespace AK_Website_Project.Repository
         {
             return dao.GetCategoryList();
         }
+
+        public Category GetCategory(int id)
+        {
+            return dao.GetCategory(id);
+        }
     }
 }

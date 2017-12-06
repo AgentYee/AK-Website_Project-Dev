@@ -40,6 +40,7 @@ namespace AK_Website_Project.DAL
             {
                 var subCategory = ctx.SubCategories
                     .Include(x => x.Items)
+                    .Include(x => x.Category)
                     .FirstOrDefault(x => x.SubCategoryId == subId);
 
                 if (subCategory != null)

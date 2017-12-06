@@ -6,5 +6,6 @@ namespace AK_Website_Project.DAL.Interface
     public interface ICategoryDao
     {
         List<Category> GetCategoryList();
+        Category GetCategory(int id);
     }
 }

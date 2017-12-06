@@ -8,6 +8,19 @@ namespace AK_Website_Project.DAL
 {
     public class CategoryDao : ICategoryDao
     {
+        public Category GetCategory(int id)
+        {
+            using (Entities ctx = new Entities())
+            {
+                var category = ctx.Categories.FirstOrDefault(x => x.CategoryId == id);
+
+                if (category != null)
+                    return category as Category;
+
+                return new Category();
+            }
+        }
+
         public List<Category> GetCategoryList()
         {
             using (Entities ctx = new Entities())

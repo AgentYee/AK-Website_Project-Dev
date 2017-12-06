@@ -1,4 +1,4 @@
-﻿@model AK_Website_Project.Models.ViewModels.SubCategory.SubCategoryViewModel
+﻿@model AK_Website_Project.Models.ViewModels.Category.CategoryViewModel
 
 @{
     ViewBag.Title = "View";
@@ -9,8 +9,7 @@
     <!--Fil d'ariane-->
     <h5>
         <a href="/Home/Index">Home</a>
-        | <a href="@string.Format("/Category/View/" + Model.Category.CategoryId)">@Model.Category.Name</a>
-        | <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.Name</a>
+        | <a href="@string.Format("/Category/View/" + Model.CategoryId)">@Model.Name</a>
     </h5>
 </div>
 
@@ -23,7 +22,7 @@
             var id = url.substring(url.lastIndexOf('/') + 1);
 
             //jQuery DataTables initialization
-            $('#subCatSearchTable').DataTable({
+            $('#catSearchTable').DataTable({
                 "responsive": true,
                 "processing": true,
                 "serverSide": true,
@@ -31,18 +30,19 @@
                 "autoWidth": false,
                 "dom": '<"top"i>rt<"bottom"lp><"clear">',
                 "ajax": {
-                    "url": "/SubCategory/LoadDataTable/" + id,
+                    "url": "/Category/LoadDataTable/" + id,
                     "type": "POST",
                     "datatype": "json"
                 },
                 "columns": [
                     { "data": "Name", "name": "Name", "autoWidth": false },
+                    { "data": "SubCategoryName", "name": "SubCategoryName", "autoWidth": false },
                     { "data": "QualityName", "name": "QualityName", "autoWidth": false },
                 ]
             });
 
             //Custom search on the datatable here
-            oTable = $('#subCatSearchTable').DataTable();
+            oTable = $('#catSearchTable').DataTable();
             $('#btnSearch').click(function () {
                 //Apply search for Item Name // DataTable column index 0
                 oTable.columns(0).search($('#txtItemName').val());
@@ -73,10 +73,11 @@
                 </table>
             </div>
             <div class="col-xs-12" style="background-color:aliceblue">
-                <table style="overflow: hidden" id="subCatSearchTable" class="table-responsive table table-striped table-hover nowrap">
+                <table style="overflow: hidden" id="catSearchTable" class="table-responsive table table-striped table-hover nowrap">
                     <thead>
                         <tr>
                             <th>Item name</th>
+                            <th>Sub Category</th>
                             <th>Quality Level</th>
                         </tr>
                     </thead>

@@ -6,6 +6,6 @@ namespace AK_Website_Project.Models.ViewModels.SubCategory
     {
         public int SubCategoryId;
         public string Name;
-        public ICollection<Entities.Item> Items;
+        public Entities.Category Category;
     }
 }

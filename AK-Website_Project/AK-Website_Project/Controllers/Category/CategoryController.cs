@@ -1,88 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AK_Website_Project.Models.Entities;
+using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Linq.Dynamic;
+using AK_Website_Project.Repository.Interface;
+using AK_Website_Project.Repository;
+using AK_Website_Project.DAL;
+using AK_Website_Project.Models.ViewModels.Category;
 
 namespace AK_Website_Project.Controllers.Category
 {
     public class CategoryController : Controller
     {
+        private readonly ICategoryRepository repo;
+
+        public CategoryController(ICategoryRepository _repo)
+        {
+            repo = _repo;
+        }
+
+        public CategoryController()
+        {
+            repo = new CategoryRepository(new CategoryDao());
+        }
+
         // GET: Category
-        public ActionResult Index()
+        public ActionResult View(int id)
         {
-            return View();
+            var category = repo.GetCategory(id);
+            var viewModel = new CategoryViewModel();
+            viewModel.CategoryId = category.CategoryId;
+            viewModel.Name = category.Name;
+            return View(viewModel);
         }
 
-        // GET: Category/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Category/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Category/Create
+        [AllowAnonymous]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult LoadDataTable(int id)
         {
-            try
+            //jQuery DataTables Param
+            var draw = Request.Form.GetValues("draw").FirstOrDefault();
+            //Find paging info
+            var start = Request.Form.GetValues("start").FirstOrDefault();
+            var length = Request.Form.GetValues("length").FirstOrDefault();
+            //Find order columns info
+            var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault()
+                                    + "][name]").FirstOrDefault();
+            var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+            //find search columns info
+            var itemName = Request.Form.GetValues("columns[0][search][value]").FirstOrDefault();
+
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt16(start) : 0;
+            int recordsTotal = 0;
+
+            using (Entities dc = new Entities())
             {
-                // TODO: Add insert logic here
+                dc.Configuration.LazyLoadingEnabled = false;
+                var v = (from a in dc.Items
+                         .Include(x => x.QualityLevel)
+                         .Include(x => x.SubCategory)
+                         .Where(x => x.SubCategory.ParentCategoryId == id)
+                         select new { a.ItemId, a.Name, QualityName = a.QualityLevel.Name, SubCategoryName = a.SubCategory.Name });
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                //SEARCHING...
+                if (!string.IsNullOrEmpty(itemName))
+                {
+                    v = v.Where(a => a.Name.Contains(itemName));
+                }
 
-        // GET: Category/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+                //SORTING...
+                if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
+                {
+                    v = v.OrderBy(sortColumn + " " + sortColumnDir);
+                }
 
-        // POST: Category/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Category/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Category/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                recordsTotal = v.Count();
+                var data = v.Skip(skip).Take(pageSize).ToList();
+                return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data },
+                    JsonRequestBehavior.AllowGet);
             }
         }
     }

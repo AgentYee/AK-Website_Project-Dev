@@ -272,6 +272,7 @@
     <Compile Include="Models\Entities\User.cs">
       <DependentUpon>DB_Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\Category\CategoryViewModel.cs" />
     <Compile Include="Models\ViewModels\Comment\CommentViewModel.cs" />
     <Compile Include="Models\ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="Models\ViewModels\Item\ItemViewModel.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Views\Item\Details.cshtml" />
     <Content Include="Views\Shared\_DropdownsPartial.cshtml" />
     <Content Include="Views\SubCategory\View.cshtml" />
+    <Content Include="Views\Category\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -327,7 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
