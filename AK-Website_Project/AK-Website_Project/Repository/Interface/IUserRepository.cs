@@ -13,5 +13,6 @@ namespace AK_Website_Project.Repository.Interface
         List<UserViewModel> GetAllUsers();
         bool CheckUserExistence(string username);
         bool CredentialsAreValid(string username, string password);
+        int GetUserIdByUsername(string username);
     }
 }

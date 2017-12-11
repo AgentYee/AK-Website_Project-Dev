@@ -23,6 +23,12 @@
                     { "data": "Name", "name": "Name", "autoWidth": false },
                     { "data": "SubCategoryName", "name": "SubCategoryName", "autoWidth": false },
                     { "data": "QualityName", "name": "QualityName", "autoWidth": false },
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [0],
+                        "visible": false
+                    }
                 ]
             });
 
@@ -70,7 +76,7 @@
                 <table style="overflow: hidden" id="homeSearchTable" class="table-responsive table table-striped table-hover nowrap">
                     <thead>
                         <tr>
-                            <th style="visibility:hidden">Id</th>
+                            <th>Id</th>
                             <th>Item name</th>
                             <th>Sub Category</th>
                             <th>Quality Level</th>

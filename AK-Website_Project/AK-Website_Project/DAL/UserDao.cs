@@ -108,5 +108,21 @@ namespace AK_Website_Project.DAL
                 return false;
             }
         }
+
+        public int GetUserIdByUsername(string username)
+        {
+            using (Entities ctx = new Entities())
+            {
+                int userId = ctx.Users.Where(x => x.Username == username).FirstOrDefault().UserId;
+                if (userId > 0)
+                {
+                    return userId;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
     }
 }

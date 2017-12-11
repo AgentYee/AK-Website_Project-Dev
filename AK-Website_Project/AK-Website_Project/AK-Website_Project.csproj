@@ -198,6 +198,7 @@
     <Content Include="Content\Resources\Images\AK_banner.PNG" />
     <Content Include="Content\Resources\Images\Aura_Kingdom_Artwork_2.jpg" />
     <Content Include="Content\Resources\Images\Cube_of_Gaia.png" />
+    <Content Include="Content\Resources\Images\Lordswrath_Hat.png" />
     <Content Include="Content\Resources\Images\Rainmist_Reach_Haunted_Passage.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -224,7 +225,9 @@
     <Compile Include="Controllers\SubCategory\SubCategoryController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="DAL\CategoryDao.cs" />
+    <Compile Include="DAL\CommentDao.cs" />
     <Compile Include="DAL\Interface\ICategoryDao.cs" />
+    <Compile Include="DAL\Interface\ICommentDao.cs" />
     <Compile Include="DAL\Interface\IItemDao.cs" />
     <Compile Include="DAL\Interface\ISubCategoryDao.cs" />
     <Compile Include="DAL\Interface\IUserDao.cs" />
@@ -285,9 +288,10 @@
     <Compile Include="Models\ViewModels\User\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
+    <Compile Include="Repository\CommentRepository.cs" />
+    <Compile Include="Repository\Interface\ICommentRepository.cs" />
     <Compile Include="Repository\Interface\ICategoryRepository.cs" />
     <Compile Include="Repository\Interface\IItemRepository.cs" />
-    <Compile Include="Repository\Interface\IPictureRepository.cs" />
     <Compile Include="Repository\Interface\ISubCategoryRepository.cs" />
     <Compile Include="Repository\Interface\IUserRepository.cs" />
     <Compile Include="Repository\ItemRepository.cs" />

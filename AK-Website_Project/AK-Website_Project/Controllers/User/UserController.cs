@@ -59,6 +59,7 @@ namespace AK_Website_Project.Controllers.User
                     if (repo.CredentialsAreValid(user.Username, user.Password))
                     {
                         Session["Username"] = user.Username;
+                        Session["UserId"] = repo.GetUserIdByUsername(user.Username);
                         return RedirectToAction("Index", "Home");
                     }
                     else

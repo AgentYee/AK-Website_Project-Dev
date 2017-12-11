@@ -2,8 +2,8 @@
 
 namespace AK_Website_Project.Repository.Interface
 {
-    public interface IPictureRepository
+    public interface ICommentRepository
     {
-        Picture GetPictureByItemId(int itemId);
+        bool PostComment(Comment comment);
     }
 }

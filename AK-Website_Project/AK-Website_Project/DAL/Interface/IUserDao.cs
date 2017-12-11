@@ -14,5 +14,6 @@ namespace AK_Website_Project.DAL.Interface
         //OTHER
         bool CheckUserExistence(string username);
         bool CredentialsAreValid(string username, string password);
+        int GetUserIdByUsername(string username);
     }
 }

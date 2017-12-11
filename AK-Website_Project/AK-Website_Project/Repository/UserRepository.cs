@@ -96,5 +96,10 @@ namespace AK_Website_Project.Repository
 
             return userViewModel;
         }
+
+        public int GetUserIdByUsername(string username)
+        {
+            return dao.GetUserIdByUsername(username);
+        }
     }
 }

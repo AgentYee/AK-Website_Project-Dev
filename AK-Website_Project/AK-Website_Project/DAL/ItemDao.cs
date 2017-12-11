@@ -84,6 +84,7 @@ namespace AK_Website_Project.DAL
                      .Include(x => x.QualityLevel)
                      .Include(x => x.SubCategory)
                      .Include(x => x.SubCategory.Category)
+                     .Include(x => x.Picture)
                      .FirstOrDefault(x => x.ItemId == itemId);
 
                 if (item != null)

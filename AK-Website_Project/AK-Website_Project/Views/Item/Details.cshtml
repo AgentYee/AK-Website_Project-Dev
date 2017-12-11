@@ -4,6 +4,17 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    $(document).ready(function () {
+        $('#btnPostComment').prop('disabled', true);
+        $('#ContentC').keyup(function () {
+            if ($(this).val().length != 0)
+                $('#btnPostComment').attr('disabled', false);
+            else
+                $('#btnPostComment').attr('disabled', true);
+        })
+    });
+</script>
 <div class="img-rounded container-fluid" style="background-color:white">
     <div class="row">
         <!--Fil d'ariane-->
@@ -18,33 +29,85 @@
 
     <div>
         <hr />
-        <div>
-            @Html.DisplayName("Quality Level")
-            @Html.DisplayFor(model => model.QualityLevel.Name)
-            <br />
-            @Html.DisplayName("Sub Category")
-            @Html.DisplayFor(model => model.SubCategory.Name)
-        </div>
-        <div id="divComments">
-            <hr />
-            <h4>Comments</h4>
-            <ul>
-                @foreach (var item in Model.Comments)
-                {
-                    <li>@string.Format(item.User.Username + ": " + item.Content)</li>
-                }
-            </ul>
-            <div class="img-rounded">
-                @if (Session["Username"] != null)
-                {   
-                    using (Html.BeginForm("PostComment", "Item", FormMethod.Post))
+        <div class="row" style="margin-bottom: 2%">
+            <div class="col-xs-6">
+                <label>Quality Level</label>
+                <br />
+                <label>
+                    @switch (Model.QualityLevel.Name)
                     {
-                        <div><p>test</p></div>
+                        case "Secret":
+                            <label style="color:orange">
+                                @Html.DisplayFor(model => model.QualityLevel.Name)
+                            </label>
+                            break;
+                        case "Rare":
+                            <label style="color:khaki">
+                                @Html.DisplayFor(model => model.QualityLevel.Name)
+                            </label>
+                            break;
+                        case "Arena":
+                            <label style="color:purple">
+                                @Html.DisplayFor(model => model.QualityLevel.Name)
+                            </label>
+                            break;
+                        case "Magic":
+                            <label style="color:lightgreen">
+                                @Html.DisplayFor(model => model.QualityLevel.Name)
+                            </label>
+                            break;
+                        case "Common":
+                            <label style="color:grey">
+                                @Html.DisplayFor(model => model.QualityLevel.Name)
+                            </label>
+                            break;
+                        default:
+                            break;
                     }
+                </label>
+                <br />
+                <label>
+                    Sub Category
+                </label>
+                <br />
+                @Html.DisplayFor(model => model.SubCategory.Name, new { @style = "float:right" })
+                <hr />
+                <div id="divComments" style="background-color:aliceblue; padding: 2.5%;">
+                    <h4>
+                        Comments
+                    </h4>
+                    <ul>
+                        @foreach (var item in Model.Comments)
+                        {
+                            <li style="width:inherit; word-wrap: break-word"><strong>@item.User.Username: </strong>@item.Content</li>
+                        }
+                    </ul>
+                    <div class="img-rounded">
+                        @if (Session["Username"] != null)
+                        {
+                            using (Html.BeginForm("PostComment", "Item", FormMethod.Post))
+                            {
+                                @Html.Hidden("itemId", Model.ItemId)
+                                @Html.TextArea("commentContent", new { @class = "form-control", @style = "resize:none; width: 100%;", @placeholder = "Write in here", @id = "ContentC" })
+                                <br />
+                                <button id="btnPostComment" class="btn btn-info" type="submit">Post</button>
+                            }
+                        }
+                        else
+                        {
+                            <h4>You must be @Html.ActionLink("logged in", "Login", "User") to leave a comment.</h4>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="divPicture" class="container col-xs-6" style="overflow:hidden;">
+                @if (!string.IsNullOrEmpty(Model.PicturePath))
+                {
+                    <img style="height:auto; margin: 0 auto;" class="img-responsive" src=@Url.Content(Model.PicturePath) />
                 }
                 else
                 {
-                    <h4>You must be @Html.ActionLink("logged in", "Login", "User") to leave a comment.</h4>
+                    <img style="height:auto; margin: 0 auto;" class="img-responsive" src="~/Content/Resources/Images/Cube_of_Gaia.png" />
                 }
             </div>
         </div>

@@ -11,5 +11,6 @@ namespace AK_Website_Project.Models.ViewModels.Item
         public int SubCategoryId { get; set; }
         public ICollection<Entities.Comment> Comments { get; set; }
         public virtual Entities.SubCategory SubCategory { get; set; }
+        public string PicturePath { get; set; }
     }
 }
