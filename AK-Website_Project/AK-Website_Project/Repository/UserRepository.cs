@@ -113,6 +113,18 @@ namespace AK_Website_Project.Repository
                 viewModel.Password = user.Password;
                 viewModel.Description = user.Description;
 
+                //calculate current rating
+                int commentCount = user.Comments.Count;
+                double maxCommentRating = commentCount * 5;
+                double totalCommentRating = 0;
+                foreach (Comment c in user.Comments)
+                {
+                    totalCommentRating += (double)c.Rating;
+                }
+
+                viewModel.Rating = (totalCommentRating / maxCommentRating) * 5d;
+                viewModel.Stars = (int)(viewModel.Rating % 5);
+
                 return viewModel;
             }
             return null;

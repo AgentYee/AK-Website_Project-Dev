@@ -27,6 +27,8 @@
                     </div>
                     <div class="card-block text-center" style="float:none">
                         @Html.HiddenFor(model => model.UserId)
+                        @Html.HiddenFor(model => model.Rating)
+                        @Html.HiddenFor(model => model.Stars)
                         <div class="from-group">
                             <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -48,6 +50,13 @@
                                 @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Description" })
                             </div>
                             @Html.ValidationMessageFor(model => model.Description, "", new { @style = "color:red;" })
+                        </div>
+                        <div class="form-group">
+                            @Model.Rating &nbsp;
+                            @for (int i = 0; i < Model.Stars; i++)
+                            {
+                                <i class="glyphicon glyphicon-star"></i>
+                            }
                         </div>
                     </div>
                     <div class="card-footer">
