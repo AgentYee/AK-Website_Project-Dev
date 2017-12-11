@@ -25,27 +25,33 @@
                         <h4 class="card-title">Sign up for an account</h4>
                         <p class="card-text">Fill out this form</p>
                     </div>
-                    <div class="card-block">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Username)
-                            @Html.TextBoxFor(model => model.Username)
-                            <br />
+                    <div class="card-block text-center" style="float:none">
+                        <div class="from-group">
+                            <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Username" })
+                            </div>
                             @Html.ValidationMessageFor(model => model.Username, "", new { @style = "color:red;" })
                         </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Password)
-                            @Html.PasswordFor(model => model.Password)
-                            <br />
+
+                        <div class="from-group">
+                            <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                            </div>
                             @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;" })
                         </div>
-                        <div class="form-group">
-                            @Html.Label("Re-enter password")
-                            @Html.PasswordFor(model => model.ConfirmPassword)
-                            <br />
+
+                        <div class="from-group">
+                            <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", @placeholder = "Re-enter password" })
+                            </div>
                             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @style = "color:red;" })
                         </div>
                     </div>
                     <div class="card-footer">
+                        <h5>Already have an account? @Html.ActionLink("Log in!", "Login", "User")</h5>
                         <button type="submit" class="btn btn-success">Create account</button>
                         <br />
                         @Html.ValidationMessage("SignUpError", new { @style = "color:red;" })

@@ -25,8 +25,8 @@ namespace AK_Website_Project.Controllers.User
         {
             if (Session["Username"] == null)
                 return RedirectToAction("Index", "Home");
-            
-            
+
+
             return View();
         }
 
@@ -50,23 +50,27 @@ namespace AK_Website_Project.Controllers.User
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(string username, string password)
+        public ActionResult Login(UserLoginViewModel user)
         {
             if (Session["Username"] == null)
             {
-                //TODO: Remove this
-                if (!ModelState.IsValid)
-                    return View(new UserLoginViewModel());
-
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                    return View(new UserLoginViewModel());
-
-                if (repo.CredentialsAreValid(username, password))
+                if (ModelState.IsValid)
                 {
-                    Session["Username"] = username;
-                    return RedirectToAction("Index", "Home");
+                    if (repo.CredentialsAreValid(user.Username, user.Password))
+                    {
+                        Session["Username"] = user.Username;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("LoginError", "Invalid username/password combination");
+                        return View(user);
+                    }
                 }
-                return View(new UserLoginViewModel());
+                else
+                {
+                    return View(user);
+                }
             }
             return RedirectToAction("Index", "Home");
         }

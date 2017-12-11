@@ -4,10 +4,10 @@
 <div class="container-fluid">
     <script>
         $(document).ready(function () {
-
             //jQuery DataTables initialization
-            $('#homeSearchTable').DataTable({
+            var myTable = $('#homeSearchTable').DataTable({
                 "responsive": true,
+                "rowId": "ItemId",
                 "processing": true,
                 "serverSide": true,
                 "orderMulti": false,
@@ -19,6 +19,7 @@
                     "datatype": "json"
                 },
                 "columns": [
+                    { "data": "ItemId", "name": "ItemId", "autoWidth": false },
                     { "data": "Name", "name": "Name", "autoWidth": false },
                     { "data": "SubCategoryName", "name": "SubCategoryName", "autoWidth": false },
                     { "data": "QualityName", "name": "QualityName", "autoWidth": false },
@@ -33,9 +34,18 @@
                 //hit search on server
                 oTable.draw();
             });
+
+            $("#homeSearchTable").on("click", "tbody tr", function (event) {
+                var id = myTable.row(this).id();
+                window.location.href = "/Item/Details/" + id;
+            });
         });
     </script>
-
+    <style>
+        table tr{
+            cursor: pointer;
+        }
+    </style>
     <div class="form-group">
         <div class="img-rounded">
             <div class="col-xs-12" style="background-color:black;">
@@ -50,7 +60,7 @@
                             <td style="color:white">Item Name</td>
                             <td><input type="text" id="txtItemName" /></td>
                             <td>
-                                <input type="button" value="Search" id="btnSearch" />
+                                <input type="button" class="btn btn-primary" value="Search" id="btnSearch" />
                             </td>
                         </tr>
                     </tbody>
@@ -60,13 +70,13 @@
                 <table style="overflow: hidden" id="homeSearchTable" class="table-responsive table table-striped table-hover nowrap">
                     <thead>
                         <tr>
+                            <th style="visibility:hidden">Id</th>
                             <th>Item name</th>
                             <th>Sub Category</th>
                             <th>Quality Level</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>

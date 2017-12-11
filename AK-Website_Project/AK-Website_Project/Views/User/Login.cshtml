@@ -17,18 +17,31 @@
     {
         @Html.AntiForgeryToken()
         <div class="card text-center img-rounded" style="margin-right:25%; margin-left:25%; background-color:white; padding:1%;">
-            <div class="card-body">
+            <div class="card-header">
                 <h4 class="card-title">Login into your account</h4>
                 <p class="card-text">Fill out this form</p>
-                <div class="col-xs-12">
-                    @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label col-xs-4" } })
-                    <input type="text" name="username" id="inputUsername" class="form-control col-xs-6" />
+            </div>
+            <div class="card-body">
+                <div class="from-group">
+                    <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Username" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @style = "color:red;" })
                 </div>
-                <div class="col-xs-12">
-                    @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label col-xs-4" } })
-                    <input type="password" name="password" id="inputPassword" class="form-control col-xs-6" />
+                <div class="from-group">
+                    <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;" })
                 </div>
+            </div>
+            <div class="card-footer">
+                <h5>Don't have an account? @Html.ActionLink("Sign up!", "SignUp", "User")</h5>
                 <button type="submit" value="Login" class="btn btn-success">Login</button>
+                <br />
+                @Html.ValidationMessage("LoginError", new { @style = "color:red;" })
             </div>
         </div>
     }
