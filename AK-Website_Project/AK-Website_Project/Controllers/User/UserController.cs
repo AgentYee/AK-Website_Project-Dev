@@ -73,23 +73,14 @@ namespace AK_Website_Project.Controllers.User
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult SignUp(string username, string password, string cpassword)
+        public ActionResult SignUp(UserRegisterViewModel user)
         {
             if (Session["Username"] == null)
             {
-                //TODO: Remove this
                 if (!ModelState.IsValid)
-                    return View(new UserRegisterViewModel());
+                    return View(user);
 
-                if ((password != cpassword) || (password == "") || (cpassword == ""))
-                    return View(new UserRegisterViewModel());
-
-                UserRegisterViewModel model = new UserRegisterViewModel();
-                model.Username = username;
-                model.Password = password;
-                model.ConfirmPassword = cpassword;
-
-                if (repo.RegisterUser(model))
+                if (repo.RegisterUser(user))
                 {
                     return RedirectToAction("Index", "Home");
                 }

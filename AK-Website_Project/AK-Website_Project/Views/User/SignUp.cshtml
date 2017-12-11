@@ -23,25 +23,23 @@
                 <div class="card-body">
                     <h4 class="card-title">Sign up for an account</h4>
                     <p class="card-text">Fill out this form</p>
-                    <div>
-                        @Html.LabelFor(model => model.Username, new { htmlAttributes = new { @class = "control-label" } })
-                        <input type="text" name="username" id="inputUsername" class="form-control" />
+                    <div class="form-group row col-xs-12">
+                        @Html.LabelFor(model => model.Username, new { @class = "control-label col-xs-2" })
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control col-xs-10" })
                     </div>
-                    <div>
-                        @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
-                        <input type="password" name="password" id="inputPassword" class="form-control" />
+                    <div class="form-group row col-xs-12">
+                        @Html.LabelFor(model => model.Password, new { @class = "control-label col-xs-2" })
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control col-xs-10" })
                     </div>
-                    <div>
-                        @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password", new { htmlAttributes = new { @class = "control-label" } })
-                        <input type="password" name="cpassword" id="inputCPassword" class="form-control" />
+                    <div class="form-group row col-xs-12">
+                        @Html.LabelFor(model => model.ConfirmPassword, "Confirm Password", new { @class = "control-label col-xs-2" })
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control col-xs-10" })
                     </div>
                 </div>
                 <div class="card-footer text-muted">
                     <button type="submit" class="btn btn-success">Create account</button>
                 </div>
             </div>
-
         </div>
-
     }
 </div>

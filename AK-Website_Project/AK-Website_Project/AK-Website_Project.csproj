@@ -197,6 +197,7 @@
     <Content Include="Content\JQuery\jquery-3.2.1.js" />
     <Content Include="Content\Resources\Images\AK_banner.PNG" />
     <Content Include="Content\Resources\Images\Aura_Kingdom_Artwork_2.jpg" />
+    <Content Include="Content\Resources\Images\Cube_of_Gaia.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Entities\DB_Entities.Context.tt">
