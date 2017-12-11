@@ -41,7 +41,7 @@
                 }
                 else
                 {
-                    @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:white;" })
+                    @Html.Label("Logged in as " + Session["Username"].ToString(), new { style = "color:black;" })
                     <a id="editProfileLink" href="@Url.Action("Account", "User", new { @id = Session["UserId"] })" class="btn btn-default navbar-btn">Edit Profile</a>
                     <a id="signUpLink" href="@Url.Action("LogOut", "User")" class="btn btn-default navbar-btn">Log out</a>
                 }
