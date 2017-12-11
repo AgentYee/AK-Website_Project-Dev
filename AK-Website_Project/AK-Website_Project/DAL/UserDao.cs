@@ -124,5 +124,20 @@ namespace AK_Website_Project.DAL
                 }
             }
         }
+
+        public bool SaveUserChanges(User user)
+        {
+            int result = -1;
+            using (Entities ctx = new Entities())
+            {
+                ctx.Entry(user).State = EntityState.Modified;
+                result = ctx.SaveChanges();
+            }
+
+            if (result != -1)
+                return true;
+
+            return false;
+        }
     }
 }

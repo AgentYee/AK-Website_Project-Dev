@@ -6,7 +6,6 @@
 }
 
 <div class="container-fluid">
-
     <script type="text/javascript">
         var loginLink = $("#loginLink");
         if (loginLink != null) {
@@ -32,7 +31,7 @@
                 <div class="from-group">
                     <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
                     </div>
                     @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;" })
                 </div>

@@ -328,6 +328,7 @@
     <Content Include="Views\Shared\_DropdownsPartial.cshtml" />
     <Content Include="Views\SubCategory\View.cshtml" />
     <Content Include="Views\Category\View.cshtml" />
+    <Content Include="Views\User\Account.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

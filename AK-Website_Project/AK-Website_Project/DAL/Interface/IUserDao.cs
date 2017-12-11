@@ -10,6 +10,7 @@ namespace AK_Website_Project.DAL.Interface
         bool DeleteUser(int userId);
         User GetUserById(int userId);
         List<User> GetAllUsers();
+        bool SaveUserChanges(User user);
 
         //OTHER
         bool CheckUserExistence(string username);

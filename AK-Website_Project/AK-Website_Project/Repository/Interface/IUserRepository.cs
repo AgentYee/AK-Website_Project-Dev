@@ -14,5 +14,8 @@ namespace AK_Website_Project.Repository.Interface
         bool CheckUserExistence(string username);
         bool CredentialsAreValid(string username, string password);
         int GetUserIdByUsername(string username);
+        UserProfileViewModel GetUserProfileByUserId(int userId);
+        bool SaveUserChanges(User user);
+        User GetRawUserById(int userId);
     }
 }

@@ -1,0 +1,63 @@
+﻿@model AK_Website_Project.Models.ViewModels.User.UserProfileViewModel
+
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center container">
+    <script type="text/javascript">
+        var signUp = $("#signUpLink");
+        if (signUp != null) {
+            signUp.hide();
+        }
+    </script>
+    @using (Html.BeginForm("Account", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="card text-center img-rounded" style="width:50%; margin-left:25%; background-color:white; padding:1%;">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h4 class="card-title">Edit your profile</h4>
+                        <p class="card-text">Change these fields to your liking</p>
+                    </div>
+                    <div class="card-block text-center" style="float:none">
+                        @Html.HiddenFor(model => model.UserId)
+                        <div class="from-group">
+                            <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Username", @readonly = "true" })
+                            </div>
+                        </div>
+
+                        <div class="from-group">
+                            <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;" })
+                        </div>
+
+                        <div class="from-group">
+                            <div class="input-group" style="width:75%; margin-left:12.5%; margin-bottom:1%">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Description" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @style = "color:red;" })
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                        <button type="button" class="btn btn-danger" click="@Url.Action("Index", "Home", new { controller = "/Index/Home" })">Back</button>
+                        <br />
+                        @Html.ValidationMessage("EditProfileError", new { @style = "color:red;" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

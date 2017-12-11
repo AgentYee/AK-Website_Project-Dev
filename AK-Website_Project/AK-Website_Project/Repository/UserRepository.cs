@@ -101,5 +101,31 @@ namespace AK_Website_Project.Repository
         {
             return dao.GetUserIdByUsername(username);
         }
+
+        public UserProfileViewModel GetUserProfileByUserId(int userId)
+        {
+            User user = dao.GetUserById(userId);
+            if(user != null)
+            {
+                UserProfileViewModel viewModel = new UserProfileViewModel();
+                viewModel.UserId = user.UserId;
+                viewModel.Username = user.Username;
+                viewModel.Password = user.Password;
+                viewModel.Description = user.Description;
+
+                return viewModel;
+            }
+            return null;
+        }
+
+        public bool SaveUserChanges(User user)
+        {
+            return dao.SaveUserChanges(user);
+        }
+
+        public User GetRawUserById(int userId)
+        {
+            return dao.GetUserById(userId);
+        }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using AK_Website_Project.DAL;
+using AK_Website_Project.Helpers;
+using AK_Website_Project.Models.Entities;
 using AK_Website_Project.Models.ViewModels.User;
 using AK_Website_Project.Repository;
 using AK_Website_Project.Repository.Interface;
 using System;
+using System.Net;
 using System.Web.Mvc;
 
 namespace AK_Website_Project.Controllers.User
@@ -21,13 +24,45 @@ namespace AK_Website_Project.Controllers.User
             repo = new UserRepository(new UserDao());
         }
 
-        public ActionResult Account()
+        [HttpGet]
+        public ActionResult Account(int id)
         {
             if (Session["Username"] == null)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "User");
+            if(Convert.ToInt32(Session["UserId"]) != id)
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized, "Bad boy");
 
+            UserProfileViewModel user = repo.GetUserProfileByUserId(id);
+            return View(user);
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult Account(UserProfileViewModel profile)
+        {
+            if (Session["Username"] == null)
+                return RedirectToAction("Login", "User");
+
+            if (profile.UserId == Convert.ToInt32(Session["UserId"]) && profile.Username == Session["Username"].ToString())
+            {
+                if (ModelState.IsValid)
+                {
+                    Models.Entities.User user = repo.GetRawUserById(Convert.ToInt32(Session["UserId"]));
+                    user.Description = profile.Description;
+
+                    if (user.Password != profile.Password)
+                    {
+                        user.Password = EncryptionHelper.HashToSHA256(profile.Password);
+                    }
+
+                    repo.SaveUserChanges(user);
+                }
+                return View(profile);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized, "Bad boy");
+            }
+
         }
 
         [HttpGet]
