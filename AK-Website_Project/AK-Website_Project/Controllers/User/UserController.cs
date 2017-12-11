@@ -77,14 +77,30 @@ namespace AK_Website_Project.Controllers.User
         {
             if (Session["Username"] == null)
             {
-                if (!ModelState.IsValid)
-                    return View(user);
-
-                if (repo.RegisterUser(user))
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index", "Home");
+                    if (!repo.CheckUserExistence(user.Username))
+                    {
+                        if (repo.RegisterUser(user))
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("SignUpError", "An error has occured");
+                            return View(user);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("SignUpError", "Username is already taken");
+                        return View(user);
+                    }
                 }
-                return View(new UserRegisterViewModel());
+                else
+                {
+                    return View(user);
+                }
             }
 
             return RedirectToAction("Index", "Home");

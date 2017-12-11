@@ -4,64 +4,49 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="img-rounded container-fluid" style="background-color:white">
+    <div class="row">
+        <!--Fil d'ariane-->
+        <span class="breadcrumb">
+            <a href="/Home/Index">Home</a> &nbsp;/&nbsp;
+            <a href="@string.Format("/Category/View/" + Model.SubCategory.ParentCategoryId)">@Model.SubCategory.Category.Name</a> &nbsp;/&nbsp;
+            <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.SubCategory.Name</a>
+        </span>
+    </div>
 
-<div class="container-fluid">
-    <!--Fil d'ariane-->
-    <span class="breadcrumb">
-        <a href="/Home/Index">Home</a> &nbsp;/&nbsp;
-        <a href="@string.Format("/Category/View/" + Model.SubCategory.ParentCategoryId)">@Model.SubCategory.Category.Name</a> &nbsp;/&nbsp;
-        <a href="@string.Format("/SubCategory/View/" + Model.SubCategoryId)">@Model.SubCategory.Name</a>
-    </span>
-</div>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
 
-<h2>Details</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
+    <div>
+        <hr />
+        <div>
             @Html.DisplayName("Quality Level")
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.QualityLevel.Name)
-        </dd>
-
-        <dt>
+            <br />
             @Html.DisplayName("Sub Category")
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.SubCategory.Name)
-        </dd>
-    </dl>
-    <div id="divComments">
-        <ul>
-            @foreach (var item in Model.Comments)
-            {
-                <li>@string.Format(item.User.Username + ": " + item.Content)</li>
-            }
-        </ul>
-        <div class="img-rounded">
-            @if (Session["Username"] != null)
-            {
-                using (Html.BeginForm("PostComment", "Item", FormMethod.Post))
+        </div>
+        <div id="divComments">
+            <hr />
+            <h4>Comments</h4>
+            <ul>
+                @foreach (var item in Model.Comments)
                 {
-                    <div><p>test</p></div>
+                    <li>@string.Format(item.User.Username + ": " + item.Content)</li>
                 }
-            }
-            else
-            {
-                <h3>You must be logged in to leave a comment.</h3>
-            }
+            </ul>
+            <div class="img-rounded">
+                @if (Session["Username"] != null)
+                {   
+                    using (Html.BeginForm("PostComment", "Item", FormMethod.Post))
+                    {
+                        <div><p>test</p></div>
+                    }
+                }
+                else
+                {
+                    <h3>You must be logged in to leave a comment.</h3>
+                }
+            </div>
         </div>
     </div>
 </div>

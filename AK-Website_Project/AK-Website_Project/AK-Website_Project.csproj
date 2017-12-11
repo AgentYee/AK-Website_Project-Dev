@@ -198,6 +198,7 @@
     <Content Include="Content\Resources\Images\AK_banner.PNG" />
     <Content Include="Content\Resources\Images\Aura_Kingdom_Artwork_2.jpg" />
     <Content Include="Content\Resources\Images\Cube_of_Gaia.png" />
+    <Content Include="Content\Resources\Images\Rainmist_Reach_Haunted_Passage.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Entities\DB_Entities.Context.tt">
@@ -286,6 +287,7 @@
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\Interface\ICategoryRepository.cs" />
     <Compile Include="Repository\Interface\IItemRepository.cs" />
+    <Compile Include="Repository\Interface\IPictureRepository.cs" />
     <Compile Include="Repository\Interface\ISubCategoryRepository.cs" />
     <Compile Include="Repository\Interface\IUserRepository.cs" />
     <Compile Include="Repository\ItemRepository.cs" />
@@ -331,6 +333,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Resources\Item_Images\" />
+    <Folder Include="Content\Resources\Profile_Images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
