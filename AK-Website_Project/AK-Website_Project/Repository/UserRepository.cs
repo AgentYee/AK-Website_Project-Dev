@@ -117,13 +117,23 @@ namespace AK_Website_Project.Repository
                 int commentCount = user.Comments.Count;
                 double maxCommentRating = commentCount * 5;
                 double totalCommentRating = 0;
-                foreach (Comment c in user.Comments)
+                if (user.Comments != null)
                 {
-                    totalCommentRating += (double)c.Rating;
+                    foreach (Comment c in user.Comments)
+                    {
+                        if (c.Rating != null)
+                        {
+                            totalCommentRating += (double)c.Rating;
+                        }
+                    }
+                    viewModel.Rating = (totalCommentRating / maxCommentRating) * 5d;
+                    viewModel.Stars = (int)(viewModel.Rating % 5);
                 }
-
-                viewModel.Rating = (totalCommentRating / maxCommentRating) * 5d;
-                viewModel.Stars = (int)(viewModel.Rating % 5);
+                else
+                {
+                    viewModel.Rating = 0d;
+                    viewModel.Stars = 0;
+                }
 
                 return viewModel;
             }
