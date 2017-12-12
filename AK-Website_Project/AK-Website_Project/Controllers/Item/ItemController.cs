@@ -59,5 +59,10 @@ namespace AK_Website_Project.Controllers.Item
 
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
+
+        public ActionResult RateComment(string commentId, string starValue)
+        {
+            return Json("");
+        }
     }
 }

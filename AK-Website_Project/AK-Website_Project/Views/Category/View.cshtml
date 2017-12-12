@@ -22,8 +22,9 @@
             var id = url.substring(url.lastIndexOf('/') + 1);
 
             //jQuery DataTables initialization
-            $('#catSearchTable').DataTable({
+            var myTable = $('#catSearchTable').DataTable({
                 "responsive": true,
+                "rowId": "ItemId",
                 "processing": true,
                 "serverSide": true,
                 "orderMulti": false,
@@ -35,9 +36,16 @@
                     "datatype": "json"
                 },
                 "columns": [
+                    { "data": "ItemId", "name": "ItemId", "autoWidth": false },
                     { "data": "Name", "name": "Name", "autoWidth": false },
                     { "data": "SubCategoryName", "name": "SubCategoryName", "autoWidth": false },
                     { "data": "QualityName", "name": "QualityName", "autoWidth": false },
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [0],
+                        "visible": false
+                    }
                 ]
             });
 
@@ -48,6 +56,11 @@
                 oTable.columns(0).search($('#txtItemName').val());
                 //hit search on server
                 oTable.draw();
+            });
+
+            $("#catSearchTable").on("click", "tbody tr", function (event) {
+                var id = myTable.row(this).id();
+                window.location.href = "/Item/Details/" + id;
             });
         });
     </script>

@@ -39,6 +39,12 @@
                     { "data": "ItemId", "name": "ItemId", "autoWidth": false },
                     { "data": "Name", "name": "Name", "autoWidth": false },
                     { "data": "QualityName", "name": "QualityName", "autoWidth": false },
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [0],
+                        "visible": false
+                    }
                 ]
             });
 
@@ -50,6 +56,7 @@
                 //hit search on server
                 oTable.draw();
             });
+
             $("#subCatSearchTable").on("click", "tbody tr", function (event) {
                 var id = myTable.row(this).id();
                 window.location.href = "/Item/Details/" + id;
